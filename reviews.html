@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Reviews | Sri Ranga Travels — 4.9★ Rated</title>
+  <meta name="description" content="Read genuine reviews from Sri Ranga Travels' satisfied customers. 500+ happy clients, 4.9/5 average rating across Google and social platforms." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>" />
+  <style>
+    .rating-overview {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--space-xl);
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      margin-bottom: var(--space-xl);
+      align-items: center;
+    }
+    .rating-big {
+      text-align: center;
+      border-right: 1px solid var(--navy-border);
+      padding-right: var(--space-xl);
+    }
+    .rating-number {
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .rating-stars-big {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+    .rating-count { font-size: 0.85rem; color: var(--text-muted); }
+
+    .rating-bars { display: flex; flex-direction: column; gap: 0.75rem; }
+    .rating-bar-row {
+      display: grid;
+      grid-template-columns: 50px 1fr 40px;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .rating-bar-label { font-size: 0.85rem; color: var(--text-secondary); text-align: right; }
+    .rating-bar-track {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .rating-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+      border-radius: 4px;
+      transition: width 1s var(--ease-smooth) 0.3s;
+    }
+    .rating-bar-pct { font-size: 0.75rem; color: var(--text-muted); }
+
+    .reviews-masonry {
+      columns: 3;
+      column-gap: var(--space-md);
+    }
+    .review-card {
+      break-inside: avoid;
+      margin-bottom: var(--space-md);
+    }
+    .review-service-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.7rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+    }
+    .review-date { font-size: 0.75rem; color: var(--text-muted); margin-top: var(--space-sm); }
+
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-full);
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: var(--space-sm);
+    }
+    .google-badge .g { color: #4285F4; font-weight: 800; }
+
+    @media (max-width: 1024px) { .reviews-masonry { columns: 2; } }
+    @media (max-width: 768px) {
+      .reviews-masonry { columns: 1; }
+      .rating-overview { grid-template-columns: 1fr; }
+      .rating-big { border-right: none; border-bottom: 1px solid var(--navy-border); padding-right: 0; padding-bottom: var(--space-md); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html"        class="nav-link">Home</a></li>
+        <li><a href="fleet.html"        class="nav-link">Fleet</a></li>
+        <li><a href="services.html"     class="nav-link">Services</a></li>
+        <li><a href="why-us.html"       class="nav-link">Why Us</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="reviews.html"      class="nav-link active">Reviews</a></li>
+        <li><a href="contact.html"      class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+919876543210" class="btn btn-outline btn-sm">📞 Call Now</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Book a Ride</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html"        class="mobile-nav-link">🏠 Home</a>
+    <a href="fleet.html"        class="mobile-nav-link">🚗 Fleet</a>
+    <a href="services.html"     class="mobile-nav-link">⚡ Services</a>
+    <a href="why-us.html"       class="mobile-nav-link">🏆 Why Us</a>
+    <a href="how-it-works.html" class="mobile-nav-link">📋 How It Works</a>
+    <a href="reviews.html"      class="mobile-nav-link active">⭐ Reviews</a>
+    <a href="contact.html"      class="mobile-nav-link">📞 Contact</a>
+    <div class="mobile-menu-footer">
+      <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Ride →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Client Reviews</span>
+    </div>
+    <div class="section-label">What People Say</div>
+    <h1>500+ <span class="text-gold">Happy Travellers</span></h1>
+    <p>Real reviews from real customers who trusted Sri Ranga Travels for their most important journeys.</p>
+  </section>
+
+  <!-- RATING OVERVIEW -->
+  <section class="section-sm" style="background:var(--ivory);">
+    <div class="container">
+      <div class="rating-overview reveal">
+        <div class="rating-big">
+          <div class="rating-number text-gold">4.9</div>
+          <div class="rating-stars-big">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <div class="rating-count">Based on 500+ reviews</div>
+          <div class="google-badge">
+            <span class="g">G</span> Google Rating
+          </div>
+        </div>
+        <div class="rating-bars">
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">5 ★</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width:92%"></div>
+            </div>
+            <span class="rating-bar-pct">92%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">4 ★</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width:6%"></div>
+            </div>
+            <span class="rating-bar-pct">6%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">3 ★</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width:1.5%"></div>
+            </div>
+            <span class="rating-bar-pct">1.5%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">2 ★</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width:0.3%"></div>
+            </div>
+            <span class="rating-bar-pct">0.3%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">1 ★</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width:0.2%"></div>
+            </div>
+            <span class="rating-bar-pct">0.2%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS GRID -->
+  <section class="section" style="background:var(--warm-50);">
+    <div class="container">
+      <div class="reviews-masonry">
+
+        <div class="review-card reveal">
+          <div class="review-service-tag">🗺️ Outstation Trip</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">"Booked a Fortuner for our family trip to Ooty. The vehicle was immaculate, the driver was extremely professional and knew all the scenic routes. The pricing was exactly as quoted — no hidden charges. Will absolutely book again with Sri Ranga Travels!"</p>
+          <div class="review-author">
+            <div class="review-avatar">RK</div>
+            <div>
+              <div class="review-author-name">Rajesh Kumar</div>
+              <div class="review-author-loc">Salem, Tamil Nadu</div>
+            </div>
+          </div>
+          <div class="review-date">📅 March 2025</div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-service-tag">💍 Wedding Car</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">"Used Sri Ranga Travels for our wedding. The Mercedes was beautifully decorated and the chauffeur was punctual and incredibly courteous. Our guests were so impressed. Thank you for making our special day perfect!"</p>
+          <div class="review-author">
+            <div class="review-avatar">PM</div>
+            <div>
+              <div class="review-author-name">Priya Meenakshi</div>
+              <div class="review-author-loc">Coimbatore</div>
+            </div>
+          </div>
+          <div class="review-date">📅 February 2025</div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-service-tag">💼 Corporate Travel</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">"We use Sri Ranga Travels for all our corporate airport transfers. Extremely reliable, always on time, and vehicles are spotless. Highly recommended for business travel. Our entire team relies on them."</p>
+          <div class="review-author">
+            <div class="review-avatar">AS</div>
+            <div>
+              <div class="review-author-name">Arun Sridhar</div>
+              <div class="review-author-loc">Chennai</div>
+            </div>
+          </div>
+          <div class="review-date">📅 January 2025</div>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-service-tag">✈️ Airport Pickup</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">"My flight was delayed by 2 hours and the driver waited patiently without any extra charges. The vehicle was clean, the AC was cold, and the driver was very helpful. This is how a service should be run!"</p>
+          <div class="review-author">
+            <div class="review-avatar">SK</div>
+            <div>
+              <div class="review-author-name">Sundar Krishnan</div>
+              <div class="review-author-loc">Bangalore</div>
+            </div>
+          </div>
+          <div class="review-date">📅 April 2025</div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-service-tag">🏖️ Tour Package</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">"Took a 5-day South India temple tour package. The Innova Crysta was extremely comfortable for 6 people. The driver knew the routes and local culture perfectly. Excellent value for money — would recommend to anyone!"</p>
+          <div class="review-author">
+            <div class="review-avatar">VR</div>
+            <div>
+              <div class="review-author-name">Vijay Raghunathan</div>
+              <div class="review-author-loc">Hyderabad</div>
+            </div>
+          </div>
+          <div class="review-date">📅 December 2024</div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-service-tag">🚗 Self Drive</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">"Rented a Honda City for a week for my self-drive trip around Tamil Nadu. The car was well-maintained and the handover process was seamless. 24/7 support came in handy when I needed route assistance. Superb service!"</p>
+          <div class="review-author">
+            <div class="review-avatar">NP</div>
+            <div>
+              <div class="review-author-name">Nithya Priya</div>
+              <div class="review-author-loc">Madurai</div>
+            </div>
+          </div>
+          <div class="review-date">📅 November 2024</div>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-service-tag">🗺️ Outstation Trip</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">"Wonderful experience from start to finish. The booking was confirmed within 20 minutes, the driver arrived 10 minutes early, and the vehicle was spotless. Sri Ranga Travels has earned a customer for life!"</p>
+          <div class="review-author">
+            <div class="review-avatar">KM</div>
+            <div>
+              <div class="review-author-name">Karthik Murugan</div>
+              <div class="review-author-loc">Trichy</div>
+            </div>
+          </div>
+          <div class="review-date">📅 May 2025</div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-service-tag">💍 Wedding Car</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="review-text">"Had a convoy of 8 luxury vehicles for my daughter's wedding. Every single car was decorated perfectly and all drivers were in uniform. The coordination was flawless. Cannot thank Sri Ranga Travels enough!"</p>
+          <div class="review-author">
+            <div class="review-avatar">TS</div>
+            <div>
+              <div class="review-author-name">Thyagarajan S</div>
+              <div class="review-author-loc">Salem</div>
+            </div>
+          </div>
+          <div class="review-date">📅 February 2025</div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-service-tag">💼 Corporate Travel</div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div>
+          <p class="review-text">"Very professional service. We had a slight delay in our vehicle assignment but the team quickly resolved it. Overall a great experience and the pricing is very competitive for the quality offered. Would use again."</p>
+          <div class="review-author">
+            <div class="review-avatar">DR</div>
+            <div>
+              <div class="review-author-name">Deepa R</div>
+              <div class="review-author-loc">Erode</div>
+            </div>
+          </div>
+          <div class="review-date">📅 March 2025</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm" style="background:var(--ivory);">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div class="section-label" style="justify-content:center;">Join Our Happy Clients</div>
+        <h2>Ready to Create Your <span class="text-gold">Own Story?</span></h2>
+        <p>Book your ride today and experience why 500+ travellers trust Sri Ranga Travels.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Book Your Ride Today</a>
+          <a href="fleet.html" class="btn btn-outline btn-lg">Browse Our Fleet</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-text">
+              <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+
+            </div>
+          </a>
+          <p>South India's most trusted premium car rental. 8+ years, 500+ happy clients.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">📘</a><a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">▶️</a><a href="#" class="social-btn">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="index.html"    class="footer-link">Home</a>
+            <a href="fleet.html"    class="footer-link">Our Fleet</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="why-us.html"   class="footer-link">Why Us</a>
+            <a href="contact.html"  class="footer-link">Contact Us</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <nav class="footer-links">
+            <a href="services.html" class="footer-link">Self-Drive Rentals</a>
+            <a href="services.html" class="footer-link">Wedding Cars</a>
+            <a href="services.html" class="footer-link">Corporate Travel</a>
+            <a href="services.html" class="footer-link">Outstation Trips</a>
+            <a href="services.html" class="footer-link">Airport Pickups</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-links">
+            <span class="footer-link">📞 +91 98765 43210</span>
+            <span class="footer-link">📧 hello@srirangatravels.in</span>
+            <span class="footer-link">📍 Salem, Tamil Nadu</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Sri Ranga Travels. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <span class="whatsapp-label">Chat with us!</span>
+    <a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

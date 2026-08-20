@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Choose Us | Sri Ranga Travels</title>
+  <meta name="description"
+    content="Discover why Sri Ranga Travels is South India's most trusted car rental agency — 24/7 support, sanitised vehicles, transparent pricing, and a 4.9-star rating." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>" />
+  <style>
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .value-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl) var(--space-lg);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .value-card:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover), var(--shadow-gold);
+    }
+
+    .value-card:hover::after {
+      opacity: 1;
+    }
+
+    .value-num {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+      opacity: 0.06;
+      position: absolute;
+      top: var(--space-sm);
+      right: var(--space-md);
+      color: var(--gold);
+    }
+
+    .value-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(201, 168, 76, 0.04));
+      border: 1.5px solid rgba(201, 168, 76, 0.25);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: var(--space-md);
+      transition: var(--transition);
+    }
+
+    .value-card:hover .value-icon {
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.28), rgba(201, 168, 76, 0.12));
+      border-color: var(--gold);
+      box-shadow: 0 0 28px rgba(201, 168, 76, 0.28);
+      transform: scale(1.08) rotate(-5deg);
+    }
+
+    .value-card h3 {
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      font-size: 1.25rem;
+    }
+
+    .value-card p {
+      font-size: 0.92rem;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .comparison-table thead tr {
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(201, 168, 76, 0.05));
+    }
+
+    .comparison-table th {
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .comparison-table td {
+      padding: 1rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--navy-border);
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .check {
+      color: #2ecc71;
+      font-size: 1.1rem;
+    }
+
+    .cross {
+      color: #e74c3c;
+      font-size: 1.1rem;
+    }
+
+    .feature-name {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .guarantee-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      text-align: center;
+    }
+
+    .guarantee-item {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl) var(--space-md);
+      transition: var(--transition);
+    }
+
+    .guarantee-item:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .guarantee-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+
+    .guarantee-item h4 {
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .guarantee-item p {
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .guarantee-row {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-table {
+        font-size: 0.8rem;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 0.75rem 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="fleet.html" class="nav-link">Our Vehicles</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="why-us.html" class="nav-link active">Why Us</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+919187982599" class="btn btn-outline btn-sm">📞 Call Now</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Book a Ride</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html" class="mobile-nav-link">🏠 Home</a>
+    <a href="fleet.html" class="mobile-nav-link">🚗 Our Vehicles</a>
+    <a href="services.html" class="mobile-nav-link">⚡ Services</a>
+    <a href="why-us.html" class="mobile-nav-link active">🏆 Why Us</a>
+    <a href="how-it-works.html" class="mobile-nav-link">📋 How It Works</a>
+    <a href="gallery.html" class="mobile-nav-link">🖼️ Gallery</a>
+    <a href="contact.html" class="mobile-nav-link">📞 Contact</a>
+    <div class="mobile-menu-footer">
+      <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Ride →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <h1>Why We're <span class="text-gold">South India's Best</span></h1>
+    <p>Eight years of consistency, 500+ happy clients, and a commitment to excellence that never wavers.</p>
+  </section>
+
+
+  <!-- VALUE PROPOSITIONS -->
+  <section class="section" style="background:var(--warm-50);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Our Advantages</div>
+        <h2>What Makes Us <span class="text-gold">Different</span></h2>
+        <p>We don't just rent cars — we deliver a complete, worry-free travel experience.</p>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-card reveal">
+          <span class="value-num">01</span>
+          <div class="value-icon">🛡️</div>
+          <h3>24/7 Roadside Assistance</h3>
+          <p>Our dedicated support team is available round-the-clock. Whether it's a tyre change or a breakdown, we'll
+            be there within the hour — anywhere in Karnataka.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-1">
+          <span class="value-num">02</span>
+          <div class="value-icon">✨</div>
+          <h3>Sanitised Vehicles</h3>
+          <p>Every vehicle is deep-cleaned, sanitised with hospital-grade disinfectants, and inspected before and after
+            each trip. Your health and safety are our top priority.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-2">
+          <span class="value-num">03</span>
+          <div class="value-icon">💰</div>
+          <h3>Transparent Pricing</h3>
+          <p>No surprise charges. Our quotes are detailed and itemised — you see exactly what you're paying for. No
+            hidden tolls, driver allowances, or mystery fees.</p>
+        </div>
+        <div class="value-card reveal">
+          <span class="value-num">04</span>
+          <div class="value-icon">🏅</div>
+          <h3>Certified Professional Drivers</h3>
+          <p>All our chauffeurs are background-checked, licensed, and trained in courteous service. They know every
+            route in South India and prioritise your safety at all times.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-1">
+          <span class="value-num">05</span>
+          <div class="value-icon">🔧</div>
+          <h3>Well-Maintained Fleet</h3>
+          <p>Every vehicle undergoes comprehensive servicing every 5,000 km. Our fleet is young (avg. 3 years) and
+            maintained to the highest automotive standards.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-2">
+          <span class="value-num">06</span>
+          <div class="value-icon">⚡</div>
+          <h3>Instant Booking Confirmation</h3>
+          <p>Book online or via WhatsApp and receive instant confirmation. Our team responds to all enquiries within 30
+            minutes, even at midnight.</p>
+        </div>
+        <div class="value-card reveal">
+          <span class="value-num">07</span>
+          <div class="value-icon">📍</div>
+          <h3>GPS-Tracked Vehicles</h3>
+          <p>Every vehicle in our fleet is GPS-equipped. Share the live tracking link with family members for added
+            peace of mind during outstation trips.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-1">
+          <span class="value-num">08</span>
+          <div class="value-icon">🏆</div>
+          <h3>Rated #1 in Bengaluru</h3>
+          <p>Consistently rated 4.9/5 on Google Reviews. Our 500+ testimonials reflect our unwavering commitment to
+            delivering a premium experience every single time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section" style="background:var(--ivory);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Comparison</div>
+        <h2>Us vs. <span class="text-gold">The Competition</span></h2>
+        <p>See how Sri Ranga Travels compares against typical car rental agencies.</p>
+      </div>
+
+      <div class="reveal" style="overflow-x:auto;">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Sri Ranga Travels</th>
+              <th>Typical Agency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-name">24/7 Roadside Support</td>
+              <td><span class="check">✔ Yes</span></td>
+              <td><span class="cross">✗ Business Hours Only</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Sanitised Before Every Trip</td>
+              <td><span class="check">✔ Always</span></td>
+              <td><span class="cross">✗ Not Guaranteed</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Transparent, No-Hidden-Fee Quotes</td>
+              <td><span class="check">✔ Fully Itemised</span></td>
+              <td><span class="cross">✗ Hidden Charges Common</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">GPS-Tracked Vehicles</td>
+              <td><span class="check">✔ All Vehicles</span></td>
+              <td><span class="cross">✗ Select Only</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Verified, Background-Checked Drivers</td>
+              <td><span class="check">✔ 100%</span></td>
+              <td><span class="cross">✗ Varies</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Instant Booking Confirmation</td>
+              <td><span class="check">✔ Within 30 Mins</span></td>
+              <td><span class="cross">✗ 2-4 Hours</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Customer Rating</td>
+              <td><span class="check">✔ 4.9 / 5 Stars</span></td>
+              <td>Varies (typically 3.5-4)</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Luxury & Vintage Cars</td>
+              <td><span class="check">✔ Full Fleet</span></td>
+              <td><span class="cross">✗ Limited Options</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEES -->
+  <section class="section-sm" style="background:var(--warm-50);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Our Guarantees</div>
+        <h2>Our <span class="text-gold">Iron-Clad Promises</span></h2>
+      </div>
+      <div class="guarantee-row">
+        <div class="guarantee-item reveal">
+          <span class="guarantee-icon">⏰</span>
+          <h4>On-Time Guarantee</h4>
+          <p>If our driver is more than 30 minutes late, your next ride is free. We take punctuality seriously.</p>
+        </div>
+        <div class="guarantee-item reveal reveal-delay-1">
+          <span class="guarantee-icon">💰</span>
+          <h4>Price Match Promise</h4>
+          <p>Found a lower price for the same service? Show us and we'll match it — no questions asked.</p>
+        </div>
+        <div class="guarantee-item reveal reveal-delay-2">
+          <span class="guarantee-icon">😊</span>
+          <h4>Satisfaction Guarantee</h4>
+          <p>Not satisfied? We'll make it right. Your experience matters more to us than anything else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm" style="background:var(--ivory);">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div class="section-label" style="justify-content:center;">Experience the Difference</div>
+        <h2>Travel Smarter with <span class="text-gold">Sri Ranga Travels</span></h2>
+        <p>Join 500+ satisfied customers who trust us for every journey.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Book Your First Ride</a>
+          <a href="gallery.html" class="btn btn-outline btn-lg">View Our Gallery</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-text">
+              <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+
+            </div>
+          </a>
+          <p>South India's most trusted premium car rental. 8+ years, 500+ happy clients.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">📘</a><a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">▶️</a><a href="#" class="social-btn">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="fleet.html" class="footer-link">Our Vehicles</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="why-us.html" class="footer-link">Why Us</a>
+            <a href="how-it-works.html" class="footer-link">How It Works</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <nav class="footer-links">
+            <a href="services.html" class="footer-link">Self-Drive Rentals</a>
+            <a href="services.html" class="footer-link">Wedding Cars</a>
+            <a href="services.html" class="footer-link">Corporate Travel</a>
+            <a href="services.html" class="footer-link">Outstation Trips</a>
+            <a href="services.html" class="footer-link">Airport Pickups</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-links">
+            <a href="tel:+919187982599" class="footer-link">📞 +91 91879 82599</a>
+            <a href="mailto:info@aptiqsystems.com" class="footer-link">📧 info@aptiqsystems.com</a>
+            <span class="footer-link">📍 Bengaluru, Karnataka</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Sri Ranga Travels. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <span class="whatsapp-label">Chat with us!</span>
+    <a href="https://wa.me/919187982599" class="whatsapp-btn" target="_blank" rel="noopener"
+      aria-label="WhatsApp">💬</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

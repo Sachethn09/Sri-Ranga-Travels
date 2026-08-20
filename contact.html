@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Now | Sri Ranga Travels — Get a Free Quote</title>
+  <meta name="description"
+    content="Book your premium car rental or get a free quote from Sri Ranga Travels. Call, WhatsApp, or fill in the form. We respond within 30 minutes." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>" />
+  <style>
+    .contact-grid-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .contact-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-lg);
+      transition: var(--transition-fast);
+    }
+
+    .contact-card:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+    }
+
+    .contact-card-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-card-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+    }
+
+    .contact-card-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .contact-card-link {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      transition: var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .contact-card-link:hover {
+      color: var(--gold);
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hours-row {
+      display: contents;
+    }
+
+    .hours-day {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hours-time {
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .booking-form-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-xl);
+      padding: 1.8rem var(--space-xl) var(--space-xl);
+    }
+
+    .booking-form-card h2 {
+      color: var(--text-dark);
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-size: 1.8rem;
+    }
+
+    .booking-form-card>p {
+      margin-bottom: var(--space-xl);
+    }
+
+    .form-section-title {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+      margin-top: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-section-title:first-of-type {
+      margin-top: 0.6rem;
+    }
+
+    .form-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(201, 168, 76, 0.3), transparent);
+    }
+
+    .success-banner {
+      display: none;
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(46, 204, 113, 0.05));
+      border: 1px solid rgba(46, 204, 113, 0.4);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      text-align: center;
+      margin-top: var(--space-md);
+    }
+
+    .success-banner.show {
+      display: block;
+    }
+
+    .success-banner h3 {
+      color: #2ecc71;
+      margin-bottom: 0.4rem;
+    }
+
+    .success-banner p {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-grid-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="fleet.html" class="nav-link">Our Vehicles</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="why-us.html" class="nav-link">Why Us</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+919187982599" class="btn btn-outline btn-sm">📞 Call Now</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Book a Ride</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html" class="mobile-nav-link">🏠 Home</a>
+    <a href="fleet.html" class="mobile-nav-link">🚗 Our Vehicles</a>
+    <a href="services.html" class="mobile-nav-link">⚡ Services</a>
+    <a href="why-us.html" class="mobile-nav-link">🏆 Why Us</a>
+    <a href="how-it-works.html" class="mobile-nav-link">📋 How It Works</a>
+    <a href="gallery.html" class="mobile-nav-link">🖼️ Gallery</a>
+    <a href="contact.html" class="mobile-nav-link active">📞 Contact</a>
+    <div class="mobile-menu-footer">
+      <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Ride →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+
+    <h1>Book Your <span class="text-gold">Premium Ride</span></h1>
+    <p>Fill in the form below or call us directly. We respond to all enquiries within 30 minutes — guaranteed.</p>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section" style="background:var(--ivory);">
+    <div class="container">
+      <div class="contact-grid-wrapper">
+
+        <!-- Sidebar Info -->
+        <div class="contact-sidebar">
+
+          <!-- Phone -->
+          <div class="contact-card reveal">
+            <div class="contact-card-header">
+              <div class="contact-card-icon">📞</div>
+              <div class="contact-card-title">Call Us Directly</div>
+            </div>
+            <div class="contact-card-links">
+              <a href="tel:+919187982599" class="contact-card-link">📱 +91 91879 82599</a>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="contact-card reveal">
+            <div class="contact-card-header">
+              <div class="contact-card-icon">💬</div>
+              <div class="contact-card-title">WhatsApp Us</div>
+            </div>
+            <div class="contact-card-links">
+              <a href="https://wa.me/919187982599?text=Hi%20Sri%20Ranga%20Travels%2C%20I%27d%20like%20to%20book%20a%20ride"
+                class="contact-card-link" target="_blank" rel="noopener">💬 +91 91879 82599</a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-card reveal">
+            <div class="contact-card-header">
+              <div class="contact-card-icon">📧</div>
+              <div class="contact-card-title">Email Us</div>
+            </div>
+            <div class="contact-card-links">
+              <a href="mailto:info@aptiqsystems.com" class="contact-card-link">info@aptiqsystems.com</a>
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="contact-card reveal">
+            <div class="contact-card-header">
+              <div class="contact-card-icon">📍</div>
+              <div class="contact-card-title">Our Location</div>
+            </div>
+            <div class="contact-card-links">
+              <span class="contact-card-link" style="cursor:default;">#7, 1st Cross, Raksha Enclave</span>
+              <span class="contact-card-link" style="cursor:default;">GKVK Post, Allalasandra</span>
+              <span class="contact-card-link" style="cursor:default;">Bengaluru - 560 065</span>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div class="contact-card reveal">
+            <div class="contact-card-header">
+              <div class="contact-card-icon">🕘</div>
+              <div class="contact-card-title">Operating Hours</div>
+            </div>
+            <div class="hours-grid">
+              <span class="hours-day">Monday – Friday</span>
+              <span class="hours-time">7:00 AM – 9:00 PM</span>
+              <span class="hours-day">Saturday – Sunday</span>
+              <span class="hours-time">7:00 AM – 8:00 PM</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Booking Form -->
+        <div class="booking-form-card reveal reveal-delay-1">
+          <h2>Send a <span class="text-gold">Booking Request</span></h2>
+
+          <form id="contactForm" action="send_mail.php" method="POST">
+
+            <!-- Personal Info -->
+            <div class="form-section-title">👤 Personal Details</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-name">Full Name *</label>
+                <input type="text" id="cf-name" name="name" placeholder="Your full name" required />
+              </div>
+              <div class="form-group">
+                <label for="cf-phone">Phone / WhatsApp *</label>
+                <input type="tel" id="cf-phone" name="phone" placeholder="+91 91879 82599" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cf-email">Email Address</label>
+              <input type="email" id="cf-email" name="email" placeholder="your@email.com" />
+            </div>
+
+            <!-- Trip Details -->
+            <div class="form-section-title">🗺️ Trip Details</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-service">Service Type *</label>
+                <select id="cf-service" name="service" required>
+                  <option value="">— Select Service —</option>
+                  <option>Self-Drive Rental</option>
+                  <option>Outstation Trip (One-Way)</option>
+                  <option>Outstation Trip (Round Trip)</option>
+                  <option>Airport Pickup</option>
+                  <option>Airport Drop</option>
+                  <option>Wedding Car</option>
+                  <option>Corporate Travel</option>
+                  <option>Tour Package</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cf-vehicle">Preferred Vehicle</label>
+                <select id="cf-vehicle" name="vehicle">
+                  <option value="">— Any / Not Sure —</option>
+                  <option>Maruti Suzuki Dzire (Sedan)</option>
+                  <option>Hyundai Aura (Sedan)</option>
+                  <option>Tata Nexon (SUV)</option>
+                  <option>Hyundai Creta (SUV)</option>
+                  <option>Maruti Suzuki Brezza (SUV)</option>
+                  <option>Mahindra Scorpio N (SUV)</option>
+                  <option>Toyota Innova Hycross (₹19/km)</option>
+                  <option>12-Seater Tempo Traveller</option>
+                  <option>20-Seater Mini Coach</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-pickup">Pickup Location *</label>
+                <input type="text" id="cf-pickup" name="pickup" placeholder="City, Area or Address" required />
+              </div>
+              <div class="form-group">
+                <label for="cf-destination">Destination</label>
+                <input type="text" id="cf-destination" name="destination" placeholder="City or Address (if known)" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-date">Travel Date *</label>
+                <input type="date" id="cf-date" name="date" required />
+              </div>
+              <div class="form-group">
+                <label for="cf-time">Pickup Time *</label>
+                <input type="time" id="cf-time" name="time" required />
+              </div>
+            </div>
+
+            <!-- Additional Notes -->
+            <div class="form-section-title">💬 Additional Notes</div>
+            <div class="form-group">
+              <label for="cf-notes">Special Requirements or Notes</label>
+              <textarea id="cf-notes" name="notes"
+                placeholder="E.g. wedding decoration needed, infant car seat required, specific routes, hotel requests, etc."></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn"
+              style="width:100%;justify-content:center;margin-top:var(--space-sm);">
+              🚗 Send Booking Request — Get Free Quote
+            </button>
+          </form>
+
+          <div class="success-banner" id="successBanner">
+            <h3>✅ Request Received!</h3>
+            <p>Thank you! We've received your booking request and will call you within 30 minutes to confirm your ride
+              and discuss pricing.</p>
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+  <!-- MAP PLACEHOLDER -->
+  <section style="background:var(--warm-50); padding: var(--space-xl) 0;">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom:var(--space-lg);">
+        <div class="section-label">Find Us</div>
+        <h2>We're Based in <span class="text-gold">Bengaluru, Karnataka</span></h2>
+        <p>Serving Bengaluru, Mysore, Hubli-Dharwad, Mangalore, Belgaum, and all of Karnataka.</p>
+      </div>
+      <div class="reveal" style="
+        background: var(--navy-card);
+        border: 1px solid var(--navy-border);
+        border-radius: var(--radius-xl);
+        height: 340px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+        padding: var(--space-lg);
+      ">
+        <span style="font-size:3rem;">📍</span>
+        <div>
+          <h4 style="color:var(--white);margin-bottom:0.3rem;">Sri Ranga Travels</h4>
+          <p style="font-size:0.9rem;">#7, 1st Cross, Raksha Enclave, GKVK Post, Allalasandra, Bengaluru - 560 065</p>
+        </div>
+        <a href="https://maps.google.com/?q=%237,+1st+Cross,+Raksha+Enclave,+GKVK+Post,+Allalasandra.+Bengaluru+560+065"
+          target="_blank" rel="noopener" class="btn btn-outline">
+          Open in Google Maps →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-text">
+              <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+
+            </div>
+          </a>
+          <p>South India's most trusted premium car rental. 8+ years, 500+ happy clients.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">📘</a><a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">▶️</a><a href="#" class="social-btn">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="fleet.html" class="footer-link">Our Vehicles</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="why-us.html" class="footer-link">Why Us</a>
+            <a href="how-it-works.html" class="footer-link">How It Works</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <nav class="footer-links">
+            <a href="services.html" class="footer-link">Self-Drive Rentals</a>
+            <a href="services.html" class="footer-link">Wedding Cars</a>
+            <a href="services.html" class="footer-link">Corporate Travel</a>
+            <a href="services.html" class="footer-link">Outstation Trips</a>
+            <a href="services.html" class="footer-link">Airport Pickups</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-links">
+            <a href="tel:+919187982599" class="footer-link">📞 +91 91879 82599</a>
+            <a href="mailto:info@aptiqsystems.com" class="footer-link">📧 info@aptiqsystems.com</a>
+            <span class="footer-link">📍 Bengaluru, Karnataka</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Sri Ranga Travels. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <span class="whatsapp-label">Chat with us!</span>
+    <a href="https://wa.me/919187982599?text=Hi%2C%20I%27d%20like%20to%20book%20a%20ride" class="whatsapp-btn"
+      target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Override contact form for this page (show success banner inline)
+    const form = document.getElementById('contactForm');
+    const banner = document.getElementById('successBanner');
+    if (form && banner) {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = form.querySelector('#submitBtn');
+        btn.innerHTML = '⏳ Sending…';
+        btn.disabled = true;
+        setTimeout(() => {
+          form.style.display = 'none';
+          banner.classList.add('show');
+        }, 1200);
+      });
+    }
+  </script>
+</body>
+
+</html>

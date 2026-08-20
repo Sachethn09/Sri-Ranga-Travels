@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works | Sri Ranga Travels — Simple Booking Process</title>
+  <meta name="description"
+    content="Book your premium car rental with Sri Ranga Travels in 4 simple steps. Choose your vehicle, pick your dates, confirm your booking, and enjoy the ride." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>" />
+  <style>
+    .process-timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: var(--space-lg);
+      padding-bottom: var(--space-xl);
+      position: relative;
+    }
+
+    .process-step:last-child {
+      padding-bottom: 0;
+    }
+
+    .step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-circle {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--deep-navy);
+      flex-shrink: 0;
+      box-shadow: 0 8px 32px var(--gold-glow);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-line {
+      flex: 1;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(201, 168, 76, 0.5), rgba(201, 168, 76, 0.05));
+      margin: 8px 0;
+    }
+
+    .process-step:last-child .step-line {
+      display: none;
+    }
+
+    .step-body {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      transition: var(--transition);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .step-body:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+      transform: translateX(6px);
+      box-shadow: var(--shadow-hover), var(--shadow-gold);
+    }
+
+    .step-emoji {
+      font-size: 4rem;
+      line-height: 1;
+    }
+
+    .step-content h3 {
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+      margin-bottom: var(--space-md);
+    }
+
+    .step-tips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tip-tag {
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: var(--radius-full);
+      padding: 0.3rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .faq-item {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition-fast);
+    }
+
+    .faq-item:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-md) var(--space-lg);
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-align: left;
+      background: none;
+      cursor: pointer;
+      gap: var(--space-md);
+      transition: var(--transition-fast);
+    }
+
+    .faq-question:hover {
+      color: var(--gold);
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-smooth);
+      padding: 0 var(--space-lg);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-answer p {
+      padding-bottom: var(--space-md);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      border-top: 1px solid var(--navy-border);
+      padding-top: var(--space-sm);
+    }
+
+    @media (max-width: 768px) {
+      .step-body {
+        grid-template-columns: 1fr;
+      }
+
+      .step-emoji {
+        display: none;
+      }
+
+      .process-step {
+        grid-template-columns: 50px 1fr;
+        gap: var(--space-md);
+      }
+
+      .step-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="fleet.html" class="nav-link">Our Vehicles</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="why-us.html" class="nav-link">Why Us</a></li>
+        <li><a href="how-it-works.html" class="nav-link active">How It Works</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+919187982599" class="btn btn-outline btn-sm">📞 Call Now</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Book a Ride</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html" class="mobile-nav-link">🏠 Home</a>
+    <a href="fleet.html" class="mobile-nav-link">🚗 Our Vehicles</a>
+    <a href="services.html" class="mobile-nav-link">⚡ Services</a>
+    <a href="why-us.html" class="mobile-nav-link">🏆 Why Us</a>
+    <a href="how-it-works.html" class="mobile-nav-link active">📋 How It Works</a>
+    <a href="gallery.html" class="mobile-nav-link">🖼️ Gallery</a>
+    <a href="contact.html" class="mobile-nav-link">📞 Contact</a>
+    <div class="mobile-menu-footer">
+      <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Ride →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <h1>Your Premium Ride in <span class="text-gold">4 Easy Steps</span></h1>
+    <p>We've made booking as effortless as the ride itself. From selection to journey, we've got you covered.</p>
+  </section>
+
+  <!-- PROCESS TIMELINE -->
+  <section class="section" style="background:var(--ivory);">
+    <div class="container" style="max-width:900px;">
+      <div class="process-timeline">
+
+        <!-- Step 1 -->
+        <div class="process-step reveal">
+          <div class="step-left">
+            <div class="step-circle">1</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <div class="step-content">
+              <h3>Choose Your Vehicle & Service</h3>
+              <p>Browse our curated fleet of 50+ premium vehicles. Filter by category (Sedan, SUV, 7-Seater, Luxury,
+                Bus) to find the perfect match for your journey type, group size, and budget.</p>
+              <div class="step-tips">
+                <span class="tip-tag">🚗 50+ Vehicles</span>
+                <span class="tip-tag">🏷️ Transparent Pricing</span>
+                <span class="tip-tag">📱 Book via WhatsApp</span>
+              </div>
+            </div>
+            <div class="step-emoji">🔍</div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="process-step reveal">
+          <div class="step-left">
+            <div class="step-circle">2</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <div class="step-content">
+              <h3>Share Your Trip Details</h3>
+              <p>Tell us your pickup location, destination, travel date, and time. For outstation trips, mention your
+                exact route so we can plan the most efficient journey for you.</p>
+              <div class="step-tips">
+                <span class="tip-tag">📍 Any Location in TN</span>
+                <span class="tip-tag">📅 One-Way or Round Trip</span>
+                <span class="tip-tag">🗺️ Route Planning Included</span>
+              </div>
+            </div>
+            <div class="step-emoji">📅</div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-step reveal">
+          <div class="step-left">
+            <div class="step-circle">3</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <div class="step-content">
+              <h3>Receive Quote & Confirm Booking</h3>
+              <p>We'll send you a detailed, itemised quote within 30 minutes. Review the pricing, confirm your booking,
+                and pay a small advance to secure your vehicle. Balance on trip completion.</p>
+              <div class="step-tips">
+                <span class="tip-tag">⏱️ Quote in 30 Mins</span>
+                <span class="tip-tag">💳 Secure Online Payment</span>
+                <span class="tip-tag">✅ Instant Confirmation</span>
+              </div>
+            </div>
+            <div class="step-emoji">✅</div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="process-step reveal">
+          <div class="step-left">
+            <div class="step-circle">4</div>
+          </div>
+          <div class="step-body">
+            <div class="step-content">
+              <h3>Sit Back & Enjoy Your Journey</h3>
+              <p>Our professional driver arrives at your doorstep, on time, every time. The vehicle is freshly
+                sanitised, fuelled, and ready. Just step in and let us handle the rest.</p>
+              <div class="step-tips">
+                <span class="tip-tag">⏰ Always On Time</span>
+                <span class="tip-tag">✨ Sanitised Vehicle</span>
+                <span class="tip-tag">🛡️ 24/7 Support</span>
+              </div>
+            </div>
+            <div class="step-emoji">🚗</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--warm-50);">
+    <div class="container" style="max-width:800px;">
+      <div class="section-header reveal">
+        <div class="section-label">FAQs</div>
+        <h2>Frequently Asked <span class="text-gold">Questions</span></h2>
+        <p>Everything you need to know before making a booking.</p>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" id="faq-q1" aria-expanded="false">
+            What documents do I need to book a vehicle?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <p>For chauffeur-driven services, just your name and contact details are sufficient. For self-drive rentals,
+              you'll need a valid driving licence (original), Aadhaar card, and a refundable security deposit.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" id="faq-q2" aria-expanded="false">
+            How far in advance should I book?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <p>For regular bookings, 24 hours in advance is ideal. For wedding cars or large group bookings, we
+              recommend booking at least 2 weeks ahead to guarantee vehicle availability. Last-minute bookings are often
+              possible — just call us!</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" id="faq-q3" aria-expanded="false">
+            Is the pricing per km or per day?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <p>We offer both per-km and per-day packages depending on the trip type. Outstation trips are billed per km
+              with a minimum daily km guarantee. Local city trips are billed per package (e.g., 4 hours/40 km). We'll
+              give you the best rate for your specific journey.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" id="faq-q4" aria-expanded="false">
+            What happens if my flight is delayed?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <p>We track all flights in real-time. If your flight is delayed, our driver will simply wait and adjust.
+              You'll never be charged extra for flight delays — we factor this in as part of our airport pickup service.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" id="faq-q5" aria-expanded="false">
+            Can I cancel or modify my booking?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <p>Yes! Cancellations made 24 hours before the trip get a full refund of the advance. Modifications (date,
+              time, vehicle) can be made up to 12 hours before the trip at no extra charge, subject to availability.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" id="faq-q6" aria-expanded="false">
+            Are all vehicles insured?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6">
+            <p>Absolutely. Every vehicle in our fleet carries comprehensive insurance coverage. For self-drive rentals,
+              passenger insurance is included. You can also opt for additional coverage at a nominal fee.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm" style="background:var(--ivory);">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div class="section-label" style="justify-content:center;">Ready to Book?</div>
+        <h2>Start Your Journey <span class="text-gold">Today</span></h2>
+        <p>It takes less than 5 minutes to book. Our team is standing by to assist.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Book Now — It's Free to Enquire</a>
+          <a href="tel:+919187982599" class="btn btn-outline btn-lg">📞 Call Directly</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-text">
+              <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+
+            </div>
+          </a>
+          <p>South India's most trusted premium car rental. 8+ years, 500+ happy clients.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">📘</a><a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">▶️</a><a href="#" class="social-btn">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="fleet.html" class="footer-link">Our Fleet</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="why-us.html" class="footer-link">Why Us</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <nav class="footer-links">
+            <a href="services.html" class="footer-link">Self-Drive Rentals</a>
+            <a href="services.html" class="footer-link">Wedding Cars</a>
+            <a href="services.html" class="footer-link">Corporate Travel</a>
+            <a href="services.html" class="footer-link">Outstation Trips</a>
+            <a href="services.html" class="footer-link">Airport Pickups</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-links">
+            <a href="tel:+919187982599" class="footer-link">📞 +91 91879 82599</a>
+            <a href="mailto:info@aptiqsystems.com" class="footer-link">📧 info@aptiqsystems.com</a>
+            <span class="footer-link">📍 Bengaluru, Karnataka</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Sri Ranga Travels. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <span class="whatsapp-label">Chat with us!</span>
+    <a href="https://wa.me/919187982599" class="whatsapp-btn" target="_blank" rel="noopener"
+      aria-label="WhatsApp">💬</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
+  </script>
+</body>
+
+</html>

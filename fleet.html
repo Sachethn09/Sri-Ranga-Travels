@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Fleet | Sri Ranga Travels — Premium Car Rental</title>
+  <meta name="description"
+    content="Explore Sri Ranga Travels' premium fleet: Sedans, SUVs, 7-Seaters, Luxury Cars, and Mini Buses — all sanitised and ready for your next journey." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="fleet.html" class="nav-link active">Our Vehicles</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="why-us.html" class="nav-link">Why Us</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+919187982599" class="btn btn-outline btn-sm">📞 Call Now</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Book a Ride</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html" class="mobile-nav-link">🏠 Home</a>
+    <a href="fleet.html" class="mobile-nav-link active">🚗 Our Vehicles</a>
+    <a href="services.html" class="mobile-nav-link">⚡ Services</a>
+    <a href="why-us.html" class="mobile-nav-link">🏆 Why Us</a>
+    <a href="how-it-works.html" class="mobile-nav-link">📋 How It Works</a>
+    <a href="gallery.html" class="mobile-nav-link">🖼️ Gallery</a>
+    <a href="contact.html" class="mobile-nav-link">📞 Contact</a>
+    <div class="mobile-menu-footer">
+      <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Ride →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+
+
+    <h1>Every Vehicle, <span class="text-gold">Every Journey</span></h1>
+    <p>50+ meticulously maintained, sanitised vehicles ready to make your journey extraordinary.</p>
+  </section>
+
+  <!-- FLEET SECTION -->
+  <section class="section" style="background:var(--ivory);">
+    <div class="container">
+      <!-- Fleet Tabs -->
+      <div class="fleet-tabs reveal">
+        <button class="fleet-tab active" data-category="all">All Vehicles</button>
+        <button class="fleet-tab" data-category="suv">🏔️ SUVs</button>
+        <button class="fleet-tab" data-category="sedan">🚘 Sedans</button>
+        <button class="fleet-tab" data-category="tempo">🚐 Tempo Traveller</button>
+      </div>
+
+      <!-- Fleet Grid — Full Catalogue -->
+      <div class="fleet-grid">
+
+        <!-- ── SEDANS ── -->
+        <!-- Maruti Suzuki Dzire -->
+        <div class="vehicle-card reveal" data-category="sedan">
+          <div class="vehicle-img-wrap">
+            <img src="images/dzire.jpg"
+              alt="Maruti Suzuki Dzire" loading="lazy" />
+            <div class="vehicle-badges"><span class="badge badge-gold">Popular</span></div>
+          </div>
+          <div class="vehicle-body">
+            <div class="vehicle-category">Sedan</div>
+            <div class="vehicle-name">Maruti Suzuki Dzire</div>
+            <div class="vehicle-specs">
+              <div class="vehicle-spec">👥 4+1 Seats</div>
+              <div class="vehicle-spec">❄️ AC</div>
+              <div class="vehicle-spec">🧳 2 Bags</div>
+              <div class="vehicle-spec">⛽ Petrol / CNG</div>
+            </div>
+            <div class="vehicle-price-row">
+              <div class="vehicle-price">
+                <div class="vehicle-price-amount">₹11/km</div>
+                <div class="vehicle-price-label">From ₹1,200/day</div>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hyundai Aura -->
+        <div class="vehicle-card reveal reveal-delay-1" data-category="sedan">
+          <div class="vehicle-img-wrap">
+            <img src="images/aura.jpg"
+              alt="Hyundai Aura" loading="lazy" />
+            <div class="vehicle-badges"><span class="badge badge-gold">Comfort</span></div>
+          </div>
+          <div class="vehicle-body">
+            <div class="vehicle-category">Sedan</div>
+            <div class="vehicle-name">Hyundai Aura</div>
+            <div class="vehicle-specs">
+              <div class="vehicle-spec">👥 4+1 Seats</div>
+              <div class="vehicle-spec">❄️ AC</div>
+              <div class="vehicle-spec">📱 Bluetooth Audio</div>
+              <div class="vehicle-spec">⛽ Petrol</div>
+            </div>
+            <div class="vehicle-price-row">
+              <div class="vehicle-price">
+                <div class="vehicle-price-amount">₹12/km</div>
+                <div class="vehicle-price-label">From ₹1,300/day</div>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SUVs ── -->
+        <!-- Tata Nexon -->
+        <div class="vehicle-card reveal" data-category="suv">
+          <div class="vehicle-img-wrap">
+            <img src="images/nexon.jpg"
+              alt="Tata Nexon" loading="lazy" />
+            <div class="vehicle-badges"><span class="badge badge-gold">5-Star Safety</span></div>
+          </div>
+          <div class="vehicle-body">
+            <div class="vehicle-category">SUV</div>
+            <div class="vehicle-name">Tata Nexon</div>
+            <div class="vehicle-specs">
+              <div class="vehicle-spec">👥 5 Seats</div>
+              <div class="vehicle-spec">❄️ Climate AC</div>
+              <div class="vehicle-spec">🛡️ 5★ Safety</div>
+              <div class="vehicle-spec">⛽ Petrol / Diesel</div>
+            </div>
+            <div class="vehicle-price-row">
+              <div class="vehicle-price">
+                <div class="vehicle-price-amount">₹14/km</div>
+                <div class="vehicle-price-label">From ₹1,500/day</div>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hyundai Creta -->
+        <div class="vehicle-card reveal reveal-delay-1" data-category="suv">
+          <div class="vehicle-img-wrap">
+            <img src="images/creta.jpg"
+              alt="Hyundai Creta" loading="lazy" />
+            <div class="vehicle-badges"><span class="badge badge-gold">Top Choice</span></div>
+          </div>
+          <div class="vehicle-body">
+            <div class="vehicle-category">SUV</div>
+            <div class="vehicle-name">Hyundai Creta</div>
+            <div class="vehicle-specs">
+              <div class="vehicle-spec">👥 5 Seats</div>
+              <div class="vehicle-spec">❄️ Dual AC</div>
+              <div class="vehicle-spec">🎵 Panoramic Roof</div>
+              <div class="vehicle-spec">⛽ Diesel / Petrol</div>
+            </div>
+            <div class="vehicle-price-row">
+              <div class="vehicle-price">
+                <div class="vehicle-price-amount">₹15/km</div>
+                <div class="vehicle-price-label">From ₹1,800/day</div>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maruti Suzuki Brezza -->
+        <div class="vehicle-card reveal reveal-delay-2" data-category="suv">
+          <div class="vehicle-img-wrap">
+            <img src="images/brezza.jpg"
+              alt="Maruti Suzuki Brezza" loading="lazy" />
+            <div class="vehicle-badges"><span class="badge badge-gold">City & Outstation</span></div>
+          </div>
+          <div class="vehicle-body">
+            <div class="vehicle-category">SUV</div>
+            <div class="vehicle-name">Maruti Suzuki Brezza</div>
+            <div class="vehicle-specs">
+              <div class="vehicle-spec">👥 5 Seats</div>
+              <div class="vehicle-spec">❄️ AC</div>
+              <div class="vehicle-spec">📱 SmartPlay</div>
+              <div class="vehicle-spec">⛽ Petrol</div>
+            </div>
+            <div class="vehicle-price-row">
+              <div class="vehicle-price">
+                <div class="vehicle-price-amount">₹14/km</div>
+                <div class="vehicle-price-label">From ₹1,500/day</div>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mahindra Scorpio N -->
+        <div class="vehicle-card reveal" data-category="suv">
+          <div class="vehicle-img-wrap">
+            <img src="images/scorpio.jpg"
+              alt="Mahindra Scorpio N" loading="lazy" />
+            <div class="vehicle-badges"><span class="badge badge-gold">Powerful 4x4</span></div>
+          </div>
+          <div class="vehicle-body">
+            <div class="vehicle-category">SUV</div>
+            <div class="vehicle-name">Mahindra Scorpio N</div>
+            <div class="vehicle-specs">
+              <div class="vehicle-spec">👥 7 Seats</div>
+              <div class="vehicle-spec">❄️ Dual AC</div>
+              <div class="vehicle-spec">🏔️ High Ground Clearance</div>
+              <div class="vehicle-spec">⛽ Diesel</div>
+            </div>
+            <div class="vehicle-price-row">
+              <div class="vehicle-price">
+                <div class="vehicle-price-amount">₹18/km</div>
+                <div class="vehicle-price-label">From ₹2,200/day</div>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toyota Innova Hycross -->
+        <div class="vehicle-card reveal reveal-delay-1" data-category="suv">
+          <div class="vehicle-img-wrap">
+            <img src="images/hycross.jpg"
+              alt="Innova Hycross" loading="lazy" />
+            <div class="vehicle-badges"><span class="badge badge-gold">Hybrid Premium</span></div>
+          </div>
+          <div class="vehicle-body">
+            <div class="vehicle-category">SUV / MPV</div>
+            <div class="vehicle-name">Toyota Innova Hycross</div>
+            <div class="vehicle-specs">
+              <div class="vehicle-spec">👥 7/8 Seats</div>
+              <div class="vehicle-spec">❄️ Multi-Zone AC</div>
+              <div class="vehicle-spec">🌿 Ottoman Seats</div>
+              <div class="vehicle-spec">⛽ Petrol Hybrid</div>
+            </div>
+            <div class="vehicle-price-row">
+              <div class="vehicle-price">
+                <div class="vehicle-price-amount">₹19/km</div>
+                <div class="vehicle-price-label">Official Rate: ₹19/km</div>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TEMPO TRAVELLER ── -->
+        <!-- 12-Seater Tempo Traveller -->
+        <div class="vehicle-card reveal" data-category="tempo">
+          <div class="vehicle-img-wrap">
+            <img src="images/tempo12.jpg"
+              alt="12-Seater Tempo Traveller" loading="lazy" />
+            <div class="vehicle-badges"><span class="badge badge-navy">Groups</span></div>
+          </div>
+          <div class="vehicle-body">
+            <div class="vehicle-category">Tempo Traveller</div>
+            <div class="vehicle-name">12-Seater Tempo Traveller</div>
+            <div class="vehicle-specs">
+              <div class="vehicle-spec">👥 12+1 Seats</div>
+              <div class="vehicle-spec">❄️ AC</div>
+              <div class="vehicle-spec">🧳 Large Luggage Space</div>
+              <div class="vehicle-spec">🎵 Music System</div>
+            </div>
+            <div class="vehicle-price-row">
+              <div class="vehicle-price">
+                <div class="vehicle-price-amount">₹24/km</div>
+                <div class="vehicle-price-label">From ₹3,200/day</div>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20-Seater Mini Coach / Tempo Traveller -->
+        <div class="vehicle-card reveal reveal-delay-1" data-category="tempo">
+          <div class="vehicle-img-wrap">
+            <img src="images/tempo20.jpg"
+              alt="20-Seater Mini Coach" loading="lazy" />
+            <div class="vehicle-badges"><span class="badge badge-navy">Large Groups</span></div>
+          </div>
+          <div class="vehicle-body">
+            <div class="vehicle-category">Tempo Traveller</div>
+            <div class="vehicle-name">20-Seater Mini Coach</div>
+            <div class="vehicle-specs">
+              <div class="vehicle-spec">👥 20 Seats</div>
+              <div class="vehicle-spec">❄️ AC</div>
+              <div class="vehicle-spec">📺 TV Screen</div>
+              <div class="vehicle-spec">🎵 Sound System</div>
+            </div>
+            <div class="vehicle-price-row">
+              <div class="vehicle-price">
+                <div class="vehicle-price-amount">₹28/km</div>
+                <div class="vehicle-price-label">From ₹4,500/day</div>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm" style="background:var(--warm-50);">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div class="section-label" style="justify-content:center;">Can't Find Your Ideal Ride?</div>
+        <h2>Tell Us Your <span class="text-gold">Requirements</span></h2>
+        <p>We can source custom vehicles for special occasions, large group tours, or unique travel needs.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Make a Custom Request</a>
+          <a href="tel:+919187982599" class="btn btn-outline btn-lg">📞 Talk to an Expert</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-text">
+              <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+
+            </div>
+          </a>
+          <p>South India's most trusted premium car rental and travel agency. 8+ years, 500+ happy clients.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">📘</a>
+            <a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">▶️</a>
+            <a href="#" class="social-btn">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="fleet.html" class="footer-link">Our Vehicles</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="why-us.html" class="footer-link">Why Us</a>
+            <a href="how-it-works.html" class="footer-link">How It Works</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Fleet Categories</h5>
+          <nav class="footer-links">
+            <a href="fleet.html" class="footer-link">Sedans</a>
+            <a href="fleet.html" class="footer-link">SUVs</a>
+            <a href="fleet.html" class="footer-link">7-Seaters</a>
+            <a href="fleet.html" class="footer-link">Luxury Cars</a>
+            <a href="fleet.html" class="footer-link">Mini Buses</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-links">
+            <a href="tel:+919187982599" class="footer-link">📞 +91 91879 82599</a>
+            <a href="mailto:info@aptiqsystems.com" class="footer-link">📧 info@aptiqsystems.com</a>
+            <span class="footer-link">📍 Bengaluru, Karnataka</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Sri Ranga Travels. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <span class="whatsapp-label">Chat with us!</span>
+    <a href="https://wa.me/919187982599" class="whatsapp-btn" target="_blank" rel="noopener"
+      aria-label="WhatsApp">💬</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

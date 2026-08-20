@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Sri Ranga Travels — Car Rental & Travel Services</title>
+  <meta name="description"
+    content="Sri Ranga Travels offers self-drive rentals, wedding luxury cars, corporate travel, outstation trips, airport pickups, and curated tour packages across South India." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>" />
+  <style>
+    .service-full-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .service-full-card:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+      box-shadow: var(--shadow-hover), var(--shadow-gold);
+    }
+
+    .service-full-card.reverse {
+      direction: rtl;
+    }
+
+    .service-full-card.reverse>* {
+      direction: ltr;
+    }
+
+    .service-full-img {
+      height: 360px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .service-full-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease-smooth);
+    }
+
+    .service-full-card:hover .service-full-img img {
+      transform: scale(1.06);
+    }
+
+    .service-full-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--navy-card));
+    }
+
+    .service-full-card.reverse .service-full-img-overlay {
+      background: linear-gradient(to left, transparent 60%, var(--navy-card));
+    }
+
+    .service-full-body {
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-md);
+    }
+
+    .service-feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .service-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .service-feature-item::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .service-full-card {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+
+      .service-full-card.reverse {
+        direction: ltr;
+      }
+
+      .service-full-img {
+        height: 240px;
+      }
+
+      .service-full-img-overlay {
+        display: none;
+      }
+
+      .service-full-body {
+        padding: var(--space-lg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="fleet.html" class="nav-link">Our Vehicles</a></li>
+        <li><a href="services.html" class="nav-link active">Services</a></li>
+        <li><a href="why-us.html" class="nav-link">Why Us</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+919187982599" class="btn btn-outline btn-sm">📞 Call Now</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Book a Ride</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html" class="mobile-nav-link">🏠 Home</a>
+    <a href="fleet.html" class="mobile-nav-link">🚗 Our Vehicles</a>
+    <a href="services.html" class="mobile-nav-link active">⚡ Services</a>
+    <a href="why-us.html" class="mobile-nav-link">🏆 Why Us</a>
+    <a href="how-it-works.html" class="mobile-nav-link">📋 How It Works</a>
+    <a href="gallery.html" class="mobile-nav-link">🖼️ Gallery</a>
+    <a href="contact.html" class="mobile-nav-link">📞 Contact</a>
+    <div class="mobile-menu-footer">
+      <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Ride →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <h1>Premium Services for <span class="text-gold">Every Journey</span></h1>
+    <p>From intimate airport pickups to grand wedding convoys — we deliver perfection at every mile.</p>
+  </section>
+
+  <!-- ═══ PACKAGE TRIPS SECTION ═══ -->
+  <section class="section" style="background:var(--warm-50);" id="packages">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Package Trips</div>
+        <h2>Ready-Made <span class="text-gold">Tour Packages</span></h2>
+        <p>All-inclusive trip packages with vehicle, driver, itinerary, and sightseeing stops — just arrive and
+          enjoy the journey.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:var(--space-md);">
+
+        <!-- Package 1: 1 Day -->
+        <div class="service-card reveal" style="position:relative; overflow:hidden;">
+          <div style="position:absolute;top:var(--space-sm);right:var(--space-sm);">
+            <span class="badge badge-gold">Day Trip</span>
+          </div>
+          <div class="service-icon">🌅</div>
+          <h3 style="color:var(--text-dark);">1 Day — Temple Trail</h3>
+          <div class="accent-line"></div>
+          <p style="margin-bottom:var(--space-sm);">Visit scenic spots and temples in one day. Bengaluru → Nandi Hills →
+            Lepakshi or Bengaluru → Mysore heritage drive.</p>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:var(--space-md);">
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Pickup &amp; drop from Bengaluru</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              AC Sedan or SUV included</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Professional driver</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Up to 300 km coverage</div>
+          </div>
+          <div
+            style="display:flex;align-items:center;justify-content:space-between;padding-top:var(--space-sm);border-top:1px solid var(--warm-100);">
+            <div>
+              <div style="font-family:var(--font-heading);font-size:1.4rem;font-weight:800;color:var(--saffron-dark);">
+                ₹2,500</div>
+              <div style="font-size:0.72rem;color:var(--text-light);">Per vehicle · All inclusive</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary btn-sm">Book Package</a>
+          </div>
+        </div>
+
+        <!-- Package 2: 2 Days -->
+        <div class="service-card reveal reveal-delay-1" style="position:relative; overflow:hidden;">
+          <div style="position:absolute;top:var(--space-sm);right:var(--space-sm);">
+            <span class="badge badge-gold">2D / 1N</span>
+          </div>
+          <div class="service-icon">🏔️</div>
+          <h3 style="color:var(--text-dark);">2 Days — Hill Station Escape</h3>
+          <div class="accent-line"></div>
+          <p style="margin-bottom:var(--space-sm);">Coorg or Chikmagalur weekend package. Day 1: sightseeing;
+            Day 2: sunrise viewpoint &amp; return.</p>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:var(--space-md);">
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦ 2
+              days, 1 night stay</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              SUV or Innova included</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Driver accommodation arranged</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Hotel assistance available</div>
+          </div>
+          <div
+            style="display:flex;align-items:center;justify-content:space-between;padding-top:var(--space-sm);border-top:1px solid var(--warm-100);">
+            <div>
+              <div style="font-family:var(--font-heading);font-size:1.4rem;font-weight:800;color:var(--saffron-dark);">
+                ₹5,500</div>
+              <div style="font-size:0.72rem;color:var(--text-light);">Per vehicle · 2 days</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary btn-sm">Book Package</a>
+          </div>
+        </div>
+
+        <!-- Package 3: 3 Days -->
+        <div class="service-card reveal reveal-delay-2"
+          style="position:relative; overflow:hidden; border-color:rgba(212,146,10,0.4);">
+          <div
+            style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--saffron-light),var(--saffron-dark));">
+          </div>
+          <div style="position:absolute;top:var(--space-sm);right:var(--space-sm);">
+            <span class="badge badge-gold">Most Popular</span>
+          </div>
+          <div class="service-icon">🕌</div>
+          <h3 style="color:var(--text-dark);">3 Days — South India Temples</h3>
+          <div class="accent-line"></div>
+          <p style="margin-bottom:var(--space-sm);">Bengaluru → Hassan (Belur-Halebidu) → Coorg → Mysore. A
+            spiritual and scenic grand circuit.</p>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:var(--space-md);">
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦ 3
+              days, 2 nights journey</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Innova Crysta or SUV</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              All major temple stops</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Hotel &amp; food guidance</div>
+          </div>
+          <div
+            style="display:flex;align-items:center;justify-content:space-between;padding-top:var(--space-sm);border-top:1px solid var(--warm-100);">
+            <div>
+              <div style="font-family:var(--font-heading);font-size:1.4rem;font-weight:800;color:var(--saffron-dark);">
+                ₹9,500</div>
+              <div style="font-size:0.72rem;color:var(--text-light);">Per vehicle · 3 days</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary btn-sm">Book Package</a>
+          </div>
+        </div>
+
+        <!-- Package 4: 4 Days -->
+        <div class="service-card reveal" style="position:relative; overflow:hidden;">
+          <div style="position:absolute;top:var(--space-sm);right:var(--space-sm);">
+            <span class="badge badge-gold">4D / 3N</span>
+          </div>
+          <div class="service-icon">🌊</div>
+          <h3 style="color:var(--text-dark);">4 Days — Coastal &amp; Temple</h3>
+          <div class="accent-line"></div>
+          <p style="margin-bottom:var(--space-sm);">Bengaluru → Mangaluru → Udupi → Murudeshwar → Gokarna. A
+            coastal pilgrimage circuit.</p>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:var(--space-md);">
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦ 4
+              days, 3 nights</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Premium SUV or Innova</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              French Quarter Pondi visit</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Mahabalipuram heritage site</div>
+          </div>
+          <div
+            style="display:flex;align-items:center;justify-content:space-between;padding-top:var(--space-sm);border-top:1px solid var(--warm-100);">
+            <div>
+              <div style="font-family:var(--font-heading);font-size:1.4rem;font-weight:800;color:var(--saffron-dark);">
+                ₹13,000</div>
+              <div style="font-size:0.72rem;color:var(--text-light);">Per vehicle · 4 days</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary btn-sm">Book Package</a>
+          </div>
+        </div>
+
+        <!-- Package 5: 5 Days -->
+        <div class="service-card reveal reveal-delay-1" style="position:relative; overflow:hidden;">
+          <div style="position:absolute;top:var(--space-sm);right:var(--space-sm);">
+            <span class="badge badge-gold">5D / 4N</span>
+          </div>
+          <div class="service-icon">🌿</div>
+          <h3 style="color:var(--text-dark);">5 Days — Kerala Backwaters</h3>
+          <div class="accent-line"></div>
+          <p style="margin-bottom:var(--space-sm);">Bengaluru → Coorg → Wayanad → Ooty → Mysuru. A beautiful
+            hills and heritage tour in 5 glorious days.</p>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:var(--space-md);">
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦ 5
+              days, 4 nights</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              AC Innova / SUV</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Munnar tea gardens &amp; Thekkady</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--text-muted);">✦
+              Alleppey houseboat option</div>
+          </div>
+          <div
+            style="display:flex;align-items:center;justify-content:space-between;padding-top:var(--space-sm);border-top:1px solid var(--warm-100);">
+            <div>
+              <div style="font-family:var(--font-heading);font-size:1.4rem;font-weight:800;color:var(--saffron-dark);">
+                ₹18,500</div>
+              <div style="font-size:0.72rem;color:var(--text-light);">Per vehicle · 5 days</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary btn-sm">Book Package</a>
+          </div>
+        </div>
+
+        <!-- Package 6: Custom -->
+        <div class="service-card reveal reveal-delay-2"
+          style="position:relative; overflow:hidden; background:var(--midnight);">
+          <div class="service-icon" style="background:rgba(212,146,10,0.2);border-color:rgba(212,146,10,0.4);">✏️
+          </div>
+          <h3 style="color:var(--white);">Custom Package</h3>
+          <div class="accent-line"></div>
+          <p style="color:rgba(255,255,255,0.6);margin-bottom:var(--space-md);">Have a specific itinerary in mind?
+            Tell us your dates, destinations, and group size — we'll craft a perfect package just for you.</p>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:var(--space-md);">
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">✦ Any number of days</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">✦ Any destination in South India</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">✦ Any vehicle from our fleet</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">✦ Fully personalised itinerary</div>
+          </div>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Plan Custom
+            Trip →</a>
+        </div>
+
+      </div>
+
+      <!-- Package note -->
+      <div style="text-align:center;margin-top:var(--space-xl);">
+        <p style="font-size:0.88rem;color:var(--text-muted);max-width:540px;margin:0 auto;">
+          All packages are per vehicle. Prices may vary based on vehicle type, season, and hotel choices.
+          <a href="contact.html" style="color:var(--saffron-dark);font-weight:700;"> Contact us</a> for an exact
+          quote.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm" style="background:var(--warm-50);">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div class="section-label" style="justify-content:center;">Ready to Travel?</div>
+        <h2>Book Your <span class="text-gold">Service Today</span></h2>
+        <p>Contact us now to get a personalised quote. Fast response within 30 minutes.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Get a Free Quote</a>
+          <a href="tel:+919187982599" class="btn btn-outline btn-lg">📞 +91 91879 82599</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-text">
+              <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+
+            </div>
+          </a>
+          <p>South India's most trusted premium car rental and travel agency. 8+ years, 500+ happy clients.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">📘</a><a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">▶️</a><a href="#" class="social-btn">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="fleet.html" class="footer-link">Our Vehicles</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="why-us.html" class="footer-link">Why Us</a>
+            <a href="how-it-works.html" class="footer-link">How It Works</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <nav class="footer-links">
+            <a href="services.html" class="footer-link">Self-Drive Rentals</a>
+            <a href="services.html" class="footer-link">Wedding Cars</a>
+            <a href="services.html" class="footer-link">Corporate Travel</a>
+            <a href="services.html" class="footer-link">Outstation Trips</a>
+            <a href="services.html" class="footer-link">Airport Pickups</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-links">
+            <a href="tel:+919187982599" class="footer-link">📞 +91 91879 82599</a>
+            <a href="mailto:info@aptiqsystems.com" class="footer-link">📧 info@aptiqsystems.com</a>
+            <span class="footer-link">📍 Bengaluru, Karnataka</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Sri Ranga Travels. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <span class="whatsapp-label">Chat with us!</span>
+    <a href="https://wa.me/919187982599" class="whatsapp-btn" target="_blank" rel="noopener"
+      aria-label="WhatsApp">💬</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

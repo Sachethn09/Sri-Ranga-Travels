@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Sri Ranga Travels — Photo Gallery</title>
+  <meta name="description"
+    content="Browse photos of Sri Ranga Travels' premium vehicle fleet, happy customers, and beautiful South Indian destinations." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>" />
+  <style>
+    /* ── Gallery Page Styles ── */
+    .gallery-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-xl);
+    }
+
+    .gallery-tab {
+      padding: 0.55rem 1.4rem;
+      border-radius: 50px;
+      border: 2px solid var(--border);
+      background: transparent;
+      color: var(--midnight);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.03em;
+    }
+
+    .gallery-tab:hover,
+    .gallery-tab.active {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      color: var(--white);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .gallery-item.tall {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.07);
+    }
+
+    .gallery-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11, 17, 38, 0.75) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+    }
+
+    .gallery-item:hover .gallery-item-overlay {
+      opacity: 1;
+    }
+
+    .gallery-item-label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .gallery-item-category {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--saffron-light);
+      margin-bottom: 0.2rem;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 20, 0.95);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: none;
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close:hover {
+      background: var(--saffron);
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+
+      .gallery-item.tall {
+        grid-row: span 1;
+        aspect-ratio: 4/3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="fleet.html" class="nav-link">Our Vehicles</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="why-us.html" class="nav-link">Why Us</a></li>
+        <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+919187982599" class="btn btn-outline btn-sm">📞 Call Now</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Book a Ride</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html" class="mobile-nav-link">🏠 Home</a>
+    <a href="fleet.html" class="mobile-nav-link">🚗 Our Vehicles</a>
+    <a href="services.html" class="mobile-nav-link">⚡ Services</a>
+    <a href="why-us.html" class="mobile-nav-link">🏆 Why Us</a>
+    <a href="how-it-works.html" class="mobile-nav-link">📋 How It Works</a>
+    <a href="gallery.html" class="mobile-nav-link active">🖼️ Gallery</a>
+    <a href="contact.html" class="mobile-nav-link">📞 Contact</a>
+    <div class="mobile-menu-footer">
+      <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Ride →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+
+    <h1>Vehicles, Journeys &amp; <span class="text-gold">Memories</span></h1>
+    <p>A glimpse into the world of Sri Ranga Travels — premium cars, scenic routes, and smiling passengers.</p>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section class="section" style="background:var(--ivory);">
+    <div class="container">
+
+      <!-- Filter Tabs -->
+      <div class="gallery-filter-bar">
+        <button class="gallery-tab active" data-filter="all">All Photos</button>
+        <button class="gallery-tab" data-filter="suv">SUVs</button>
+        <button class="gallery-tab" data-filter="sedan">Sedans</button>
+        <button class="gallery-tab" data-filter="tempo">Tempo Traveller</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+
+        <!-- Sedans -->
+        <div class="gallery-item reveal" data-cat="sedan">
+          <img src="images/dzire.jpg"
+            alt="Maruti Suzuki Dzire" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Sedan</div>
+              <div class="gallery-item-label">Maruti Suzuki Dzire</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-cat="sedan">
+          <img src="images/aura.jpg"
+            alt="Hyundai Aura" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Sedan</div>
+              <div class="gallery-item-label">Hyundai Aura</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUVs -->
+        <div class="gallery-item tall reveal" data-cat="suv">
+          <img src="images/nexon.jpg"
+            alt="Tata Nexon" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">SUV</div>
+              <div class="gallery-item-label">Tata Nexon</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-cat="suv">
+          <img src="images/creta.jpg"
+            alt="Hyundai Creta" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">SUV</div>
+              <div class="gallery-item-label">Hyundai Creta</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2" data-cat="suv">
+          <img src="images/brezza.jpg"
+            alt="Maruti Suzuki Brezza" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">SUV</div>
+              <div class="gallery-item-label">Maruti Suzuki Brezza</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-cat="suv">
+          <img src="images/scorpio.jpg"
+            alt="Mahindra Scorpio N" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">SUV</div>
+              <div class="gallery-item-label">Mahindra Scorpio N</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-cat="suv">
+          <img src="images/hycross.jpg"
+            alt="Innova Hycross" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">SUV / MPV</div>
+              <div class="gallery-item-label">Toyota Innova Hycross</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tempo Traveller -->
+        <div class="gallery-item tall reveal" data-cat="tempo">
+          <img src="images/tempo12.jpg"
+            alt="12-Seater Tempo Traveller" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller</div>
+              <div class="gallery-item-label">12-Seater Tempo Traveller</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-cat="tempo">
+          <img src="images/tempo20.jpg"
+            alt="20-Seater Mini Coach" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller</div>
+              <div class="gallery-item-label">20-Seater Mini Coach</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="section" style="background:var(--midnight); padding:var(--space-xl) 0;">
+    <div class="container" style="text-align:center;">
+      <div class="section-label" style="color:var(--saffron-light);">Book Your Ride</div>
+      <h2 style="color:var(--white); margin-bottom:var(--space-sm);">Ready to Create Your Own <span
+          class="text-gold">Memories?</span></h2>
+      <p style="color:rgba(255,255,255,0.65); max-width:520px; margin:0 auto var(--space-lg);">Choose from our premium
+        fleet and let Sri Ranga Travels take you on an unforgettable journey across South India.</p>
+      <a href="contact.html" class="btn btn-primary">Book Your Ride →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-text">
+              <span class="logo-name">Sri Ranga <span class="logo-accent">Travels</span></span>
+            </div>
+          </a>
+          <p>South India's most trusted premium car rental and travel agency. Over 8 years of excellence, 500+ happy
+            clients, and a fleet that defines luxury.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+            <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+            <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+            <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <nav class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="fleet.html" class="footer-link">Our Vehicles</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="why-us.html" class="footer-link">Why Us</a>
+            <a href="how-it-works.html" class="footer-link">How It Works</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+          </nav>
+        </div>
+
+        <div class="footer-col">
+          <h5>Services</h5>
+          <nav class="footer-links">
+            <a href="services.html" class="footer-link">Self-Drive Rentals</a>
+            <a href="services.html" class="footer-link">Wedding Cars</a>
+            <a href="services.html" class="footer-link">Corporate Travel</a>
+            <a href="services.html" class="footer-link">Outstation Trips</a>
+            <a href="services.html" class="footer-link">Airport Pickups</a>
+            <a href="services.html" class="footer-link">Tour Packages</a>
+          </nav>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-links">
+            <a href="tel:+919187982599" class="footer-link">📞 +91 91879 82599</a>
+            <a href="mailto:info@aptiqsystems.com" class="footer-link">📧 info@aptiqsystems.com</a>
+            <span class="footer-link">📍 Bengaluru, Karnataka</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Sri Ranga Travels. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <img id="lightboxImg" src="" alt="" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Gallery filter
+    const tabs = document.querySelectorAll('.gallery-tab');
+    const items = document.querySelectorAll('.gallery-item');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.cat === filter) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        const label = item.querySelector('.gallery-item-label');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = label ? label.textContent : '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.getElementById('lightboxClose').addEventListener('click', () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+
+</html>
