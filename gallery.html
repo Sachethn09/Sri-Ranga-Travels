@@ -124,17 +124,19 @@
       transform: translate(-50%, -50%);
       width: 50px;
       height: 50px;
-      background: rgba(230, 92, 23, 0.95); /* saffron background */
+      background: rgba(230, 92, 23, 0.95);
+      /* saffron background */
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-size: 1.2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       transition: var(--transition);
       z-index: 2;
-      padding-left: 4px; /* offset play icon slightly for centering */
+      padding-left: 4px;
+      /* offset play icon slightly for centering */
     }
 
     .gallery-item:hover .play-button-icon {
@@ -274,7 +276,7 @@
 
       <!-- Filter Tabs -->
       <div class="gallery-filter-bar">
-        <button class="gallery-tab active" data-filter="all">All Media</button>
+        <button class="gallery-tab active" data-filter="all">All Photos</button>
         <button class="gallery-tab" data-filter="suv">SUVs</button>
         <button class="gallery-tab" data-filter="sedan">Sedans</button>
         <button class="gallery-tab" data-filter="tempo">Tempo Traveller</button>
@@ -285,8 +287,7 @@
 
         <!-- Sedans -->
         <div class="gallery-item reveal" data-cat="sedan">
-          <img src="images/dzire.jpg"
-            alt="Maruti Suzuki Dzire" loading="lazy" />
+          <img src="images/dzire.jpg" alt="Maruti Suzuki Dzire" loading="lazy" />
           <div class="gallery-item-overlay">
             <div>
               <div class="gallery-item-category">Sedan</div>
@@ -296,8 +297,7 @@
         </div>
 
         <div class="gallery-item reveal reveal-delay-1" data-cat="sedan">
-          <img src="images/aura.jpg"
-            alt="Hyundai Aura" loading="lazy" />
+          <img src="images/aura.jpg" alt="Hyundai Aura" loading="lazy" />
           <div class="gallery-item-overlay">
             <div>
               <div class="gallery-item-category">Sedan</div>
@@ -306,7 +306,18 @@
           </div>
         </div>
 
+        <div class="gallery-item reveal reveal-delay-2" data-cat="sedan">
+          <img src="images/etios.png" alt="Toyota Etios" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Sedan</div>
+              <div class="gallery-item-label">Toyota Etios</div>
+            </div>
+          </div>
+        </div>
+
         <!-- SUVs -->
+        <!-- Tata Nexon
         <div class="gallery-item tall reveal" data-cat="suv">
           <img src="images/nexon.jpg"
             alt="Tata Nexon" loading="lazy" />
@@ -317,7 +328,9 @@
             </div>
           </div>
         </div>
+        -->
 
+        <!-- Hyundai Creta
         <div class="gallery-item reveal reveal-delay-1" data-cat="suv">
           <img src="images/creta.jpg"
             alt="Hyundai Creta" loading="lazy" />
@@ -328,7 +341,9 @@
             </div>
           </div>
         </div>
+        -->
 
+        <!-- Maruti Suzuki Brezza
         <div class="gallery-item reveal reveal-delay-2" data-cat="suv">
           <img src="images/brezza.jpg"
             alt="Maruti Suzuki Brezza" loading="lazy" />
@@ -339,7 +354,9 @@
             </div>
           </div>
         </div>
+        -->
 
+        <!-- Mahindra Scorpio N
         <div class="gallery-item reveal" data-cat="suv">
           <img src="images/scorpio.jpg"
             alt="Mahindra Scorpio N" loading="lazy" />
@@ -350,22 +367,61 @@
             </div>
           </div>
         </div>
+        -->
 
-        <div class="gallery-item reveal reveal-delay-1" data-cat="suv">
-          <img src="images/hycross.jpg"
-            alt="Innova Hycross" loading="lazy" />
+
+        <div class="gallery-item reveal" data-cat="suv">
+          <img src="images/hycross.png" alt="Toyota Innova Hycross Hybrid" loading="lazy" />
           <div class="gallery-item-overlay">
             <div>
               <div class="gallery-item-category">SUV / MPV</div>
-              <div class="gallery-item-label">Toyota Innova Hycross</div>
+              <div class="gallery-item-label">Toyota Innova Hycross Hybrid</div>
             </div>
           </div>
         </div>
 
+        <div class="gallery-item reveal reveal-delay-1" data-cat="suv">
+          <img src="images/crysta-ac.jpg" alt="Toyota Innova Crysta AC" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">SUV / MPV</div>
+              <div class="gallery-item-label">Toyota Innova Crysta (AC)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2" data-cat="suv">
+          <img src="images/crysta-nonac.jpg" alt="Toyota Innova Crysta Non-AC" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">SUV / MPV</div>
+              <div class="gallery-item-label">Toyota Innova Crysta (Non-AC)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-cat="suv">
+          <img src="images/ertiga-ac.jpg" alt="Maruti Suzuki Ertiga AC" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">SUV / MPV</div>
+              <div class="gallery-item-label">Maruti Suzuki Ertiga (AC)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2" data-cat="suv">
+          <img src="images/ertiga-nonac.jpg" alt="Maruti Suzuki Ertiga Non-AC" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">SUV / MPV</div>
+              <div class="gallery-item-label">Maruti Suzuki Ertiga (Non-AC)</div>
+            </div>
+          </div>
+        </div>
         <!-- Tempo Traveller -->
         <div class="gallery-item tall reveal" data-cat="tempo">
-          <img src="images/tempo12.jpg"
-            alt="12-Seater Tempo Traveller" loading="lazy" />
+          <img src="images/tempo12.jpg" alt="12-Seater Tempo Traveller" loading="lazy" />
           <div class="gallery-item-overlay">
             <div>
               <div class="gallery-item-category">Tempo Traveller</div>
@@ -375,8 +431,7 @@
         </div>
 
         <div class="gallery-item reveal reveal-delay-1" data-cat="tempo">
-          <img src="images/tempo20.jpg"
-            alt="20-Seater Mini Coach" loading="lazy" />
+          <img src="images/tempo20.jpg" alt="20-Seater Mini Coach" loading="lazy" />
           <div class="gallery-item-overlay">
             <div>
               <div class="gallery-item-category">Tempo Traveller</div>
@@ -385,17 +440,6 @@
           </div>
         </div>
 
-        <!-- Video Tour -->
-        <div class="gallery-item reveal reveal-delay-2" data-cat="tempo" data-type="video" data-video-src="images/fleet-video.mp4">
-          <img src="images/gallery-6.jpg" alt="Luxury Tempo Traveller Tour Video" loading="lazy" />
-          <div class="play-button-icon">▶</div>
-          <div class="gallery-item-overlay">
-            <div>
-              <div class="gallery-item-category">Video Tour</div>
-              <div class="gallery-item-label">Luxury Tempo Traveller Video Tour</div>
-            </div>
-          </div>
-        </div>
 
         <!-- New Tempo Traveller Photos -->
         <div class="gallery-item reveal" data-cat="tempo">
@@ -468,9 +512,62 @@
           </div>
         </div>
 
+        <div class="gallery-item reveal reveal-delay-1" data-cat="tempo">
+          <img src="images/bus-balaji.png" alt="Luxury Mini Bus (Sri Ranga)" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller / Bus</div>
+              <div class="gallery-item-label">Luxury Mini Bus (Sri Ranga)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2" data-cat="tempo">
+          <img src="images/bus-siddeshwara.png" alt="Luxury Mini Coach (Sri Ranga)" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller / Bus</div>
+              <div class="gallery-item-label">Luxury Mini Coach (Sri Ranga)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-cat="tempo">
+          <img src="images/bus-danvik.jpg" alt="Luxury Mini Coach (Sri Ranga)" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller / Bus</div>
+              <div class="gallery-item-label">Luxury Mini Coach (Sri Ranga)</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
+
+  <!-- VIDEO TOUR SECTION -->
+  <section class="section" style="background:var(--white); border-top: 1px solid var(--warm-100);">
+    <div class="container">
+      <div class="section-header reveal">
+        <!-- <div class="section-label" style="justify-content:center;">Fleet Showcase</div> -->
+        <h2 style="text-align:center;">Watch Our <span class="text-gold">Video Tour</span></h2>
+        <div class="header-line" style="margin: 0.5rem auto var(--space-md);"></div>
+        <p class="section-subtitle" style="text-align:center; max-width:600px; margin: 0 auto var(--space-lg);">Take a
+          virtual walk-through of our premium vehicles and see the luxury comfort we offer.</p>
+      </div>
+
+      <div class="video-tour-wrapper reveal"
+        style="max-width: 800px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); position: relative;">
+        <video controls poster="images/gallery-6.jpg"
+          style="width: 100%; display: block; height: auto; max-height: 80vh; background: #000; object-fit: contain;">
+          <source src="images/fleet-video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+
 
   <!-- CTA STRIP -->
   <section class="section" style="background:var(--midnight); padding:var(--space-xl) 0;">
@@ -583,7 +680,7 @@
       item.addEventListener('click', () => {
         const isVideo = item.dataset.type === 'video';
         const label = item.querySelector('.gallery-item-label');
-        
+
         if (isVideo) {
           lightboxImg.style.display = 'none';
           lightboxVideo.style.display = 'block';
@@ -594,12 +691,12 @@
           lightboxVideo.pause();
           lightboxVideo.src = '';
           lightboxImg.style.display = 'block';
-          
+
           const img = item.querySelector('img');
           lightboxImg.src = img.src;
           lightboxImg.alt = img.alt;
         }
-        
+
         lightboxCaption.textContent = label ? label.textContent : '';
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
