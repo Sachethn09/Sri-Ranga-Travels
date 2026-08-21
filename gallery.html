@@ -117,6 +117,31 @@
       margin-bottom: 0.2rem;
     }
 
+    .play-button-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(230, 92, 23, 0.95); /* saffron background */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: var(--transition);
+      z-index: 2;
+      padding-left: 4px; /* offset play icon slightly for centering */
+    }
+
+    .gallery-item:hover .play-button-icon {
+      background: var(--midnight);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
     /* Lightbox */
     .lightbox {
       position: fixed;
@@ -136,12 +161,14 @@
       pointer-events: all;
     }
 
-    .lightbox img {
+    .lightbox img,
+    .lightbox video {
       max-width: 90vw;
       max-height: 85vh;
       object-fit: contain;
       border-radius: var(--radius-lg);
       box-shadow: 0 0 80px rgba(0, 0, 0, 0.6);
+      outline: none;
     }
 
     .lightbox-close {
@@ -247,7 +274,7 @@
 
       <!-- Filter Tabs -->
       <div class="gallery-filter-bar">
-        <button class="gallery-tab active" data-filter="all">All Photos</button>
+        <button class="gallery-tab active" data-filter="all">All Media</button>
         <button class="gallery-tab" data-filter="suv">SUVs</button>
         <button class="gallery-tab" data-filter="sedan">Sedans</button>
         <button class="gallery-tab" data-filter="tempo">Tempo Traveller</button>
@@ -358,6 +385,89 @@
           </div>
         </div>
 
+        <!-- Video Tour -->
+        <div class="gallery-item reveal reveal-delay-2" data-cat="tempo" data-type="video" data-video-src="images/fleet-video.mp4">
+          <img src="images/gallery-6.jpg" alt="Luxury Tempo Traveller Tour Video" loading="lazy" />
+          <div class="play-button-icon">▶</div>
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Video Tour</div>
+              <div class="gallery-item-label">Luxury Tempo Traveller Video Tour</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Tempo Traveller Photos -->
+        <div class="gallery-item reveal" data-cat="tempo">
+          <img src="images/gallery-1.jpg" alt="Luxury Tempo Traveller Interior Cabin" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller</div>
+              <div class="gallery-item-label">Luxury Cabin Interior</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-cat="tempo">
+          <img src="images/gallery-2.jpg" alt="Premium Seating and Roof Lighting" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller</div>
+              <div class="gallery-item-label">Premium Reclining Seats &amp; Lighting</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2" data-cat="tempo">
+          <img src="images/gallery-3.jpg" alt="Force Tempo Traveller Front Profile" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller</div>
+              <div class="gallery-item-label">Force Tempo Traveller Front View</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-cat="tempo">
+          <img src="images/gallery-4.jpg" alt="Force Tempo Traveller Front Action Shot" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller</div>
+              <div class="gallery-item-label">Force Tempo Traveller Front Close-up</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-1" data-cat="tempo">
+          <img src="images/gallery-5.jpg" alt="Force Tempo Traveller Rear Design" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller</div>
+              <div class="gallery-item-label">Rear Profile with Ladder</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2" data-cat="tempo">
+          <img src="images/gallery-7.jpg" alt="Premium Pioneer Speakers Cabin Audio" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller</div>
+              <div class="gallery-item-label">Premium Sound System Cabin</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-cat="tempo">
+          <img src="images/gallery-8.jpg" alt="Force Tempo Traveller and Luxury Bus Fleet" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-category">Tempo Traveller / Bus</div>
+              <div class="gallery-item-label">Sri Ranga Fleet Tour Bus</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -438,6 +548,7 @@
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose">✕</button>
     <img id="lightboxImg" src="" alt="" />
+    <video id="lightboxVideo" controls style="display: none;"></video>
     <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
 
@@ -465,29 +576,48 @@
     // Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxVideo = document.getElementById('lightboxVideo');
     const lightboxCaption = document.getElementById('lightboxCaption');
 
     items.forEach(item => {
       item.addEventListener('click', () => {
-        const img = item.querySelector('img');
+        const isVideo = item.dataset.type === 'video';
         const label = item.querySelector('.gallery-item-label');
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
+        
+        if (isVideo) {
+          lightboxImg.style.display = 'none';
+          lightboxVideo.style.display = 'block';
+          lightboxVideo.src = item.dataset.videoSrc;
+          lightboxVideo.play().catch(err => console.log('Autoplay blocked or failed:', err));
+        } else {
+          lightboxVideo.style.display = 'none';
+          lightboxVideo.pause();
+          lightboxVideo.src = '';
+          lightboxImg.style.display = 'block';
+          
+          const img = item.querySelector('img');
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+        }
+        
         lightboxCaption.textContent = label ? label.textContent : '';
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
       });
     });
 
-    document.getElementById('lightboxClose').addEventListener('click', () => {
+    const closeLightbox = () => {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
-    });
+      lightboxVideo.pause();
+      lightboxVideo.src = '';
+    };
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
 
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) {
-        lightbox.classList.remove('open');
-        document.body.style.overflow = '';
+        closeLightbox();
       }
     });
   </script>
